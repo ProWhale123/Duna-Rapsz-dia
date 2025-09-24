@@ -1,0 +1,130 @@
+---
+const menuItems = {
+  "Előételek": [
+    { name: "Füstölt Lazac Tatár", price: "3800 Ft", desc: "Friss kaporral, citrusos crème fraîche, házi pirítós" },
+    { name: "Kacsamáj Pástétom", price: "4200 Ft", desc: "Tokaji aszú zselével, brióssal, füge lekvárral" },
+    { name: "Grillezett Kecskesajt", price: "3500 Ft", desc: "Mézes-balzsamecetes, rukkolával, dióval" },
+  ],
+  "Főételek": [
+    { name: "Rozmaringos Bárányborda", price: "9500 Ft", desc: "Sáfrányos rizottóval, grillezett spárgával" },
+    { name: "Ropogós Bőrű Fogasfilé", price: "7200 Ft", desc: "Fehérboros mártással, paszternák pürével" },
+    { name: "Konfitált Kacsacomb", price: "6800 Ft", desc: "Hagymás törtburgonyával és párolt lilakáposztával" },
+    { name: "Vega Wellington", price: "6200 Ft", desc: "Gombás-spenótos, leveles tésztában, paradicsomszósszal" },
+  ],
+  "Desszertek": [
+    { name: "Lávakeksz", price: "2900 Ft", desc: "Belga csokoládéból, erdei gyümölcs raguval, vanília fagylalttal" },
+    { name: "Somlói Revolúció", price: "3100 Ft", desc: "A klasszikus desszert modern köntésben" },
+    { name: "Mákos Guba Variációk", price: "2700 Ft", desc: "Mákos-málnás, mascarpone krémmel" },
+  ],
+  "Italok (válogatás)": [
+    { name: "Házi Limonádék", price: "1200 Ft", desc: "Bodza, Málna, Gyömbér" },
+    { name: "Prémium Kézműves Sörök", price: "1500 Ft-tól", desc: "Helyi főzdék különlegességei" },
+    { name: "Tokaji Aszú (5 puttonyos)", price: "2800 Ft/dl", desc: "Édes kísértés a desszertek mellé" },
+  ]
+};
+---
+
+<section id="menu" style="background-color: var(--card-bg);">
+  <div class="container" data-animate-on-scroll>
+    <h2>Kulináris Kínálatunk</h2>
+    <p class="section-subtitle">Séfünk által gondosan összeállított menüsor, mely a szezonalitásra és a legfrissebb alapanyagokra épül. Fedezze fel ízeinket!</p>
+    <div class="menu-grid">
+      {Object.entries(menuItems).map(([category, items]) => (
+        <div class="menu-category-card">
+          <h3>{category}</h3>
+          <div class="menu-items-list">
+            {items.map(item => (
+              <div class="menu-item">
+                <div class="item-header">
+                  <span class="item-name">{item.name}</span>
+                  <span class="item-price">{item.price}</span>
+                </div>
+                <p class="item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 2.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .menu-category-card {
+    background-color: var(--dark-bg);
+    border-radius: 10px;
+    padding: 2.5rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+  }
+  .menu-category-card:hover {
+      transform: translateY(-8px);
+  }
+  .menu-category-card h3 {
+    text-align: left;
+    font-size: 2.2rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.8rem;
+    color: var(--primary-color);
+  }
+  .menu-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .menu-item {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px dashed rgba(255,255,255,0.1);
+  }
+  .menu-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+  }
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .item-name {
+    color: var(--light-text);
+  }
+  .item-price {
+    color: var(--primary-color);
+    white-space: nowrap; /* Megakadályozza az ártörést */
+  }
+  .item-desc {
+    font-size: 0.95rem;
+    color: #b0b0b0;
+    margin: 0;
+    font-weight: 300;
+  }
+
+  @media (max-width: 768px) {
+      .menu-grid {
+          grid-template-columns: 1fr;
+      }
+      .menu-category-card {
+          padding: 1.8rem;
+      }
+      .menu-category-card h3 {
+          font-size: 1.8rem;
+      }
+      .item-header {
+          font-size: 1.2rem;
+      }
+  }
+</style>

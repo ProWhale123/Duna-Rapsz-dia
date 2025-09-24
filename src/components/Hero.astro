@@ -1,0 +1,146 @@
+---
+// Hero Szekció
+---
+<header id="hero" class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Duna Rapszódia</h1>
+    <p class="hero-subtitle">Ahol a kulináris művészet és a panoráma találkozik</p>
+    <a href="#reservation" class="btn">Asztalfoglalás</a>
+    <div class="scroll-down-indicator">
+        <a href="#menu" aria-label="Görgessen le az étlaphoz">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21L12 3M12 21L19 14M12 21L5 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .hero {
+    position: relative;
+    height: 100vh;
+    background-image: url('/images/hero-bg.jpg'); /* CSERÉLD KI A SAJÁT KÉPEDRE */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    animation: zoom-in-out 25s ease-in-out infinite;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Sötétebb overlay */
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fade-in-up 1s ease-out 0.8s forwards; /* Késleltetett animáció */
+    max-width: 900px;
+    padding: 0 1rem;
+  }
+
+  .hero-title {
+    font-size: 6rem; /* Nagyobb cím */
+    margin: 0;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  }
+
+  .hero-subtitle {
+    font-size: 1.7rem; /* Nagyobb alcím */
+    margin: 1.5rem 0 3rem 0;
+    font-family: var(--font-sans);
+    font-weight: 300;
+    color: #f0f0f0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+
+  .scroll-down-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      opacity: 0;
+      animation: fade-in-up 1s ease-out 1.5s forwards, bounce 2s infinite 2s;
+  }
+  .scroll-down-indicator svg {
+      width: 40px;
+      height: 40px;
+      color: white;
+      transition: transform 0.3s ease;
+  }
+   .scroll-down-indicator a:hover svg {
+      transform: translateY(5px);
+   }
+
+
+  @keyframes zoom-in-out {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes fade-in-up {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+   @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-5px) translateX(-50%);
+    }
+}
+
+  @media (max-width: 900px) {
+    .hero-title {
+      font-size: 4rem;
+    }
+    .hero-subtitle {
+      font-size: 1.4rem;
+    }
+  }
+  @media (max-width: 600px) {
+    .hero-title {
+      font-size: 3rem;
+    }
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+    .btn {
+        padding: 0.8rem 2rem;
+        font-size: 0.9rem;
+    }
+  }
+</style>

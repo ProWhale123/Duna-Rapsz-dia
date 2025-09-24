@@ -1,0 +1,63 @@
+<footer class="site-footer">
+  <div class="container">
+    <h3>Duna Rapszódia</h3>
+    <p>1052 Budapest, Arany János utca 1. | +36 1 234 5678 | <a href="mailto:info@dunarapszodia.hu">info@dunarapszodia.hu</a></p>
+    <div class="social-links">
+        <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+        <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+        <a href="#" aria-label="TripAdvisor"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-compass"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg></a>
+    </div>
+    <p class="copyright">&copy; {new Date().getFullYear()} Duna Rapszódia. Portfólió elem.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding: 5rem 2rem 3rem 2rem; /* Alsó padding csökkentve */
+    text-align: center;
+    font-weight: 300;
+    background-color: var(--card-bg); /* Sötétebb háttér */
+    border-top: 1px solid var(--border-color);
+  }
+  .site-footer h3 {
+      font-size: 2.8rem; /* Nagyobb logó */
+      margin: 0 0 1.5rem 0;
+      color: var(--primary-color);
+  }
+  .site-footer p {
+    color: #a0a0a0;
+    margin: 0.8rem 0;
+    font-size: 1.05rem;
+  }
+  .site-footer p a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+  }
+  .site-footer p a:hover {
+      color: var(--secondary-color);
+  }
+  .social-links {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+  }
+  .social-links a {
+      color: var(--light-text);
+      transition: color 0.3s ease, transform 0.3s ease;
+  }
+  .social-links a:hover {
+      color: var(--primary-color);
+      transform: translateY(-5px);
+  }
+  .social-links svg {
+      width: 28px;
+      height: 28px;
+  }
+  .copyright {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #666;
+  }
+</style>

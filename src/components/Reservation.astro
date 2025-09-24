@@ -1,0 +1,115 @@
+---
+// Foglalási Szekció
+---
+<section id="reservation" class="reservation-section" style="background-color: var(--dark-bg);">
+  <div class="container" data-animate-on-scroll>
+    <h2>Asztalfoglalás</h2>
+    <p class="section-subtitle">Biztosítsa helyét online rendszerünkön keresztül egyszerűen és gyorsan. Várjuk szeretettel egy felejthetetlen kulináris élményre!</p>
+    <form class="reservation-form">
+        <div class="form-group">
+            <label for="name">Név</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail cím</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Telefonszám (opcionális)</label>
+            <input type="tel" id="phone" name="phone">
+        </div>
+        <div class="form-group">
+            <label for="guests">Vendégek száma</label>
+            <input type="number" id="guests" name="guests" min="1" max="12" value="2" required>
+        </div>
+        <div class="form-group">
+            <label for="date">Dátum</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+        <div class="form-group">
+            <label for="time">Időpont</label>
+            <input type="time" id="time" name="time" value="19:00" required>
+        </div>
+        <div class="form-group full-width">
+            <label for="message">Különleges kérések, allergiák, megjegyzések (opcionális)</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn">Asztal Foglalása</button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .reservation-form {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+    background-color: var(--card-bg);
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    border: 1px solid var(--border-color);
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-group.full-width {
+      grid-column: 1 / -1; /* Teljes szélesség */
+  }
+  .form-group label {
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+    color: var(--primary-color);
+    font-weight: 500;
+  }
+  .form-group input,
+  .form-group textarea {
+    padding: 0.9rem 1.2rem;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    color: var(--light-text);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(201, 180, 154, 0.3);
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+      color: #888;
+  }
+  .reservation-form button {
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-top: 1.5rem;
+    width: auto;
+  }
+
+  /* Dátum és idő input stílusok */
+  input[type="date"], input[type="time"] {
+      padding-right: 1.2rem; /* Hely a naptár/óra ikonnak */
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.8) grayscale(1) brightness(0.8); /* Világosabb ikon */
+    cursor: pointer;
+  }
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.8) grayscale(1) brightness(0.8);
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    .reservation-form {
+      grid-template-columns: 1fr;
+      padding: 2rem;
+    }
+  }
+</style>
