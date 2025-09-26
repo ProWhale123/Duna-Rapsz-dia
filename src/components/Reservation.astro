@@ -82,10 +82,6 @@
     border-color: var(--primary-color);
     box-shadow: 0 0 0 2px rgba(201, 180, 154, 0.3);
   }
-  .form-group input::placeholder,
-  .form-group textarea::placeholder {
-      color: #888;
-  }
   .reservation-form button {
     grid-column: 1 / -1;
     justify-self: center;
@@ -94,22 +90,29 @@
   }
 
   /* Dátum és idő input stílusok */
-  input[type="date"], input[type="time"] {
-      padding-right: 1.2rem; /* Hely a naptár/óra ikonnak */
-  }
-  input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(0.8) grayscale(1) brightness(0.8); /* Világosabb ikon */
-    cursor: pointer;
-  }
+  input[type="date"]::-webkit-calendar-picker-indicator,
   input[type="time"]::-webkit-calendar-picker-indicator {
     filter: invert(0.8) grayscale(1) brightness(0.8);
     cursor: pointer;
   }
   
+  /* === MOBILRA OPTIMALIZÁLÁS === */
   @media (max-width: 768px) {
     .reservation-form {
-      grid-template-columns: 1fr;
-      padding: 2rem;
+      /* Mobilon csökkentjük a paddingot, hogy több hely legyen */
+      padding: 2rem 1.5rem;
+      gap: 1.5rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem; /* Kicsit kisebb címkék */
+    }
+
+    .reservation-form button {
+        width: 100%; /* A gomb foglalja el a teljes szélességet */
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        font-size: 1.1rem;
     }
   }
 </style>

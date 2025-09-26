@@ -30,19 +30,21 @@ const galleryImages = [
 <style>
   .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    max-width: 1000px;
+    /* Alapértelmezetten 2 oszlop, nagyobb képernyőn 3 */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 1100px;
     margin: 0 auto;
   }
   .gallery-item {
     position: relative;
     overflow: hidden;
     border-radius: 8px;
-    height: 280px; /* Fix magasság a képeknek */
     box-shadow: 0 4px 15px rgba(0,0,0,0.4);
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* A trükk: aspect-ratio gondoskodik a helyes képarányról */
+    aspect-ratio: 4 / 3; 
   }
   .gallery-item:hover {
     transform: translateY(-8px);
@@ -51,7 +53,7 @@ const galleryImages = [
   .gallery-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Fontos, hogy a képek kitöltsék a fix méretet */
+    object-fit: cover;
     transition: transform 0.4s ease-out, filter 0.4s ease-out;
   }
   .gallery-item:hover img {
@@ -59,32 +61,21 @@ const galleryImages = [
     filter: brightness(0.8);
   }
   .overlay-text {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 1rem;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
-    color: white;
-    font-family: var(--font-serif);
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-align: center;
-    opacity: 0;
-    transform: translateY(100%);
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    /* ... (ez a rész maradhat a régi) ... */
   }
-  .gallery-item:hover .overlay-text {
-      opacity: 1;
-      transform: translateY(0);
+
+  /* Tablet méret felett 3 oszlopos elrendezés */
+  @media (min-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
-  
-  @media (max-width: 768px) {
-      .gallery-grid {
-          grid-template-columns: 1fr;
-      }
-      .gallery-item {
-          height: 250px;
-      }
+
+  /* Mobilon 1 oszlopos elrendezés */
+  @media (max-width: 600px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem; /* Nagyobb rés a képek között mobilon */
+    }
   }
 </style>
